@@ -6,10 +6,10 @@ ign_get_sources(tests)
 # FIXME the mesh test does not work
 list(REMOVE_ITEM tests mesh.cc)
 
-if (${SKIP_av})
-  list(REMOVE_ITEM tests encoder_timing.cc)
-  list(REMOVE_ITEM tests video_encoder.cc)
-endif()
+# if (${SKIP_av})
+list(REMOVE_ITEM tests encoder_timing.cc)
+list(REMOVE_ITEM tests video_encoder.cc)
+# endif()
 
 ign_build_tests(
   TYPE INTEGRATION
