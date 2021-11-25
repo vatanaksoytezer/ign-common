@@ -64,7 +64,6 @@ void ImageHeightmap::FillHeightMap(int _subSampling,
   // Get the image format so we can arrange our heightmap
   // Currently supported: 8-bit and 16-bit.
   auto imgFormat = this->img.PixelFormat();
-  ignmsg << "Heightmap format: " << imgFormat << std::endl;
 
   double maxPixelValue;
   if(imgFormat == ignition::common::Image::PixelFormatType::L_INT8 ||
@@ -126,6 +125,7 @@ void ImageHeightmap::FillHeightMap(int _subSampling,
           _heights[(_vertSize - y - 1) * _vertSize + x] = h;
       }
     }
+    delete [] data;
   }
   else if(imgFormat == ignition::common::Image::PixelFormatType::BGR_INT16 ||
     imgFormat == ignition::common::Image::PixelFormatType::L_INT16 ||
@@ -189,7 +189,7 @@ void ImageHeightmap::FillHeightMap(int _subSampling,
     ignerr << "Unknown image format, heightmap will not be loaded" << std::endl;
     return;
   }
-  delete [] data;
+
 }
 
 //////////////////////////////////////////////////
